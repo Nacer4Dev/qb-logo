@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: transparent;
+        }
+        #logo {
+            position: absolute;
+            top: 10px; /* المسافة من الأعلى */
+            left: 50%; /* بداية منتصف الشاشة */
+            transform: translateX(-50%); /* تحريك الشعار إلى اليسار بنسبة 50% من عرضه */
+            width: 150px; /* عرض الشعار */
+            height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+            display: none; /* إخفاء الشعار بشكل افتراضي */
+        }
+    </style>
+</head>
+<body>
+    <img id="logo" src="logo.gif" alt="Logo">
+    <script>
+        // استقبال الرسائل من اللعبة
+        window.addEventListener('message', function(event) {
+            if (event.data.type === "showLogo") {
+                var logo = document.getElementById('logo');
+                if (event.data.enable) {
+                    logo.style.display = 'block'; // عرض الشعار
+                } else {
+                    logo.style.display = 'none'; // إخفاء الشعار
+                }
+            }
+        });
+    </script>
+</body>
+</html>
